@@ -6,6 +6,7 @@ import com.sparta.spartagoods.security.UserDetailsImpl;
 import com.sparta.spartagoods.service.ItemService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/item")
@@ -33,4 +35,13 @@ public class ItemController {
         return itemService.findItem(itemId);
     }
 
+    @ResponseBody
+    @GetMapping
+    public ResponseEntity<Page<ItemResponseDto>> listItem(
+            @RequestParam(name = "standard") String standard,
+            @RequestParam(name = "orderBy") String orderBy,
+            @RequestParam(name = "page") int page,
+            @RequestParam(name = "pagenum") int pageNum) {
+        return itemService.listItem(standard, orderBy, page, pageNum);
+    }
 }
