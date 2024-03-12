@@ -3,6 +3,7 @@ package com.sparta.spartagoods.dto;
 import com.sparta.spartagoods.entity.user.UserRoleEnum;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +14,7 @@ public class SignupRequestDto {
     @NotBlank
     private String email;
     @NotBlank
+    @Size(min = 8, max = 15)
     private String password;
     @NotBlank
     private String gender;
