@@ -35,11 +35,12 @@ public class User {
     @Enumerated(value = EnumType.STRING)
     private UserRoleEnum role;
 
-    public User(SignupRequestDto requestDto) {
+    public User(SignupRequestDto requestDto, String encodedPassword) {
         this.email = requestDto.getEmail();
-        this.password = requestDto.getPassword();
+        this.password = encodedPassword;
         this.gender = requestDto.getGender();
         this.phoneNumber = requestDto.getPhoneNumber();
         this.address = requestDto.getPhoneNumber();
+        this.role = requestDto.getRole();
     }
 }

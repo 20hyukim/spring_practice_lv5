@@ -54,7 +54,7 @@ public class WebSecurityConfig {
         http.sessionManagement((sessionManagement) -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         );
 
-        http.authorizeHttpRequests((authorizeHttpRequests)-> authorizeHttpRequests
+        http.authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                 .requestMatchers("/users/**").permitAll()
                 .anyRequest().authenticated()

@@ -5,9 +5,11 @@ import com.sparta.spartagoods.dto.SignupRequestDto;
 import com.sparta.spartagoods.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-@RestController("/users")
+@RestController
+@RequestMapping("/users")
 public class UserController {
     private final UserService userService;
 
@@ -15,6 +17,7 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
+
 
     @PostMapping("/signup")
     public ResponseEntity<ResponseDto> signup(@RequestBody SignupRequestDto requestDto){
