@@ -1,6 +1,6 @@
 package com.sparta.spartagoods.dto;
 
-import com.sparta.spartagoods.entity.User.UserRoleEnum;
+import com.sparta.spartagoods.entity.user.UserRoleEnum;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;

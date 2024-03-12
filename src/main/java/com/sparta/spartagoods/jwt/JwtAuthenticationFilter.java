@@ -2,7 +2,7 @@ package com.sparta.spartagoods.jwt;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sparta.spartagoods.dto.LoginRequestDto;
-import com.sparta.spartagoods.entity.User.UserRoleEnum;
+import com.sparta.spartagoods.entity.user.UserRoleEnum;
 import com.sparta.spartagoods.security.UserDetailsImpl;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

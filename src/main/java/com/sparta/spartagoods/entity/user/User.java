@@ -1,4 +1,4 @@
-package com.sparta.spartagoods.entity.User;
+package com.sparta.spartagoods.entity.user;
 
 import com.sparta.spartagoods.dto.SignupRequestDto;
 import jakarta.persistence.*;
