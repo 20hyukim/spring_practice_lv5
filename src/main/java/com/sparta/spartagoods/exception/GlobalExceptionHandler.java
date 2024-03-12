@@ -10,7 +10,7 @@ import org.springframework.web.context.request.WebRequest;
 import java.util.Collections;
 import java.util.NoSuchElementException;
 
-@RestControllerAdvice
+//@RestControllerAdvice
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(value = { Exception.class })

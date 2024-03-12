@@ -7,13 +7,13 @@ import com.sparta.spartagoods.service.ItemService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -26,6 +26,11 @@ public class ItemController {
     @Secured("ROLE_ADMIN")
     public ResponseEntity<ItemResponseDto> createItem(@Valid @RequestBody ItemRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails) {
         return itemService.createItem(requestDto);
+    }
+
+    @GetMapping("/{itemId}")
+    public ResponseEntity<ItemResponseDto> findItem(@PathVariable Long itemId){
+        return itemService.findItem(itemId);
     }
 
 }
