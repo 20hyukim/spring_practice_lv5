@@ -1,10 +1,14 @@
 package com.sparta.spartagoods.entity.item;
 
 import com.sparta.spartagoods.dto.item.ItemRequestDto;
+import com.sparta.spartagoods.entity.cart.Cart;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -29,6 +33,9 @@ public class Item {
 
     @Column(nullable = false)
     private ItemCategoryEnum category;
+
+    @OneToMany(mappedBy = "item")
+    private List<Cart> itemCart = new ArrayList<>();
 
     public Item(ItemRequestDto requestDto) {
         this.itemName = requestDto.getItemName();
