@@ -1,6 +1,7 @@
 package com.sparta.spartagoods.dto.cart;
 
 import com.sparta.spartagoods.entity.cart.Cart;
+import com.sparta.spartagoods.entity.item.Item;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,4 +19,13 @@ public class CartResponseDto {
         this.itemName = itemName;
         this.count = cart.getCount();
     }
+
+
+    public CartResponseDto(Item item, Long userId, Cart cartItem) {
+        this.userId = userId;
+        this.itemId = item.getItemId();
+        this.itemName = item.getItemName();
+        this.count = cartItem.getCount();
+    }
+
 }

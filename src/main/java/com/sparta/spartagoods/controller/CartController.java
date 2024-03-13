@@ -2,7 +2,9 @@ package com.sparta.spartagoods.controller;
 
 import com.sparta.spartagoods.dto.cart.CartRequestDto;
 import com.sparta.spartagoods.dto.cart.CartResponseDto;
+import com.sparta.spartagoods.dto.cart.TotalCartResponseDto;
 import com.sparta.spartagoods.dto.item.ItemRequestDto;
+import com.sparta.spartagoods.entity.user.User;
 import com.sparta.spartagoods.security.UserDetailsImpl;
 import com.sparta.spartagoods.service.CartService;
 import jakarta.validation.Valid;
@@ -15,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Slf4j
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/cart")
@@ -29,6 +30,26 @@ public class CartController {
         return cartService.addCart(requestDto, userDetails);
     }
 
+    @GetMapping
+    @Secured("ROLE_ADMIN")
+    public ResponseEntity<TotalCartResponseDto> viewCart(@AuthenticationPrincipal UserDetailsImpl userDetails) {
+        return cartService.viewCart(userDetails);
+    }
+
+    @PatchMapping
+    @Secured("ROLE_ADMIN")
+    public ResponseEntity<Object> editCart(
+            @RequestParam(name = "cartId") Long cartID,
+            @RequestParam(name = "count") Long count,
+            @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        return cartService.editCart(cartID, count, userDetails);
+    }
+
+    @DeleteMapping("/{cartId}")
+    @Secured("ROLE_ADMIN")
+    public ResponseEntity<Object> deleteCart(@PathVariable Long cartId, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        return cartService.deleteCart(cartId, userDetails);
+    }
 
 
 }
