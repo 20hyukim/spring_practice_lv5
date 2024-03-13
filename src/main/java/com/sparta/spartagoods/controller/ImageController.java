@@ -23,9 +23,14 @@ public class ImageController {
 
     private final ImageService imageService;
     @PostMapping
-    public Long saveImage(HttpServletRequest request, @RequestParam(value = "image") MultipartFile images, ImagePhoto imagePhoto, @AuthenticationPrincipal UserDetailsImpl userDetails) throws IOException {
+    public Long saveImage(HttpServletRequest request,
+                          @RequestParam(value = "image") MultipartFile images,
+                          @RequestParam(value = "item_itemId") Long itemId,
+                          ImagePhoto imagePhoto,
+                          @AuthenticationPrincipal UserDetailsImpl userDetails
+    ) throws IOException {
         System.out.println(images);
         System.out.println(imagePhoto);
-        return imageService.saveImage(images, imagePhoto, userDetails);
+        return imageService.saveImage(images, itemId, imagePhoto, userDetails);
     }
 }
