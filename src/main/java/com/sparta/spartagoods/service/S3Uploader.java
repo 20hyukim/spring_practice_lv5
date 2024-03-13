@@ -61,7 +61,11 @@ public class S3Uploader {
     }
 
     private Optional<File> convert(MultipartFile file) throws IOException {
-        File convertFile = File.createTempFile("temp", null); // 임시 파일 생성
+        String originalFileName = file.getOriginalFilename();
+        String extension = originalFileName.substring(originalFileName.lastIndexOf(".")); // 파일 확장자 추출
+
+        // 임시 파일 생성 시, 확장자를 원본 파일의 확장자로 설정
+        File convertFile = File.createTempFile("temp", extension); // 확장자 지정
         try (FileOutputStream fos = new FileOutputStream(convertFile)) {
             fos.write(file.getBytes());
         } catch (IOException e) {
