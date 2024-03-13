@@ -2,6 +2,7 @@ package com.sparta.spartagoods.entity.item;
 
 import com.sparta.spartagoods.dto.item.ItemRequestDto;
 import com.sparta.spartagoods.entity.cart.Cart;
+import com.sparta.spartagoods.entity.image.ImagePhoto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,6 +37,9 @@ public class Item {
 
     @OneToMany(mappedBy = "item")
     private List<Cart> itemCart = new ArrayList<>();
+
+    @OneToOne(mappedBy = "item")
+    private ImagePhoto imagePhoto;
 
     public Item(ItemRequestDto requestDto) {
         this.itemName = requestDto.getItemName();
