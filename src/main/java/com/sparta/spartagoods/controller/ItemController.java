@@ -3,6 +3,7 @@ package com.sparta.spartagoods.controller;
 import com.sparta.spartagoods.dto.item.ItemRequestDto;
 import com.sparta.spartagoods.dto.item.ItemResponseDto;
 import com.sparta.spartagoods.service.ItemService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
-
+@Tag(name = "상품 컨트롤러", description = "상품 등록, 조회, 리스트 조회")
 @Slf4j
 @RestController
 @RequiredArgsConstructor

@@ -7,6 +7,7 @@ import com.sparta.spartagoods.dto.item.ItemRequestDto;
 import com.sparta.spartagoods.entity.user.User;
 import com.sparta.spartagoods.security.UserDetailsImpl;
 import com.sparta.spartagoods.service.CartService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Tag(name = "장바구니 컨트롤러", description = "장바구니 등록, 조회, 편집, 삭제")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/cart")

@@ -57,6 +57,8 @@ public class WebSecurityConfig {
         http.authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                 .requestMatchers("/users/**").permitAll()
+                .requestMatchers("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll() //swagger 허용해주기 위해 작성.
+                .requestMatchers("/swagger-resources/**", "/api-docs/**").permitAll()
                 .anyRequest().authenticated()
         );
 

@@ -4,6 +4,7 @@ import com.sparta.spartagoods.dto.Image.ImageUploadResponse;
 import com.sparta.spartagoods.entity.image.ImagePhoto;
 import com.sparta.spartagoods.security.UserDetailsImpl;
 import com.sparta.spartagoods.service.ImageService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.awt.*;
 import java.io.IOException;
 
+@Tag(name = "이미지 컨트롤러", description = "이미지 등록")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/image")
