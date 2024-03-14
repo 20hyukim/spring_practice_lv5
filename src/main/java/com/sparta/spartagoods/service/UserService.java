@@ -3,31 +3,22 @@ package com.sparta.spartagoods.service;
 import com.sparta.spartagoods.dto.ResponseDto;
 import com.sparta.spartagoods.dto.SignupRequestDto;
 import com.sparta.spartagoods.entity.user.User;
-import com.sparta.spartagoods.entity.user.UserRoleEnum;
-import com.sparta.spartagoods.jwt.JwtUtil;
 import com.sparta.spartagoods.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Objects;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    private final JwtUtil jwtUtil;
 
-    @Autowired
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtUtil jwtUtil) {
-        this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
-        this.jwtUtil = jwtUtil;
-    }
 
     @Transactional
     public ResponseEntity<ResponseDto> signup(SignupRequestDto requestDto) {

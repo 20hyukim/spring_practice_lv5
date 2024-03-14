@@ -2,19 +2,15 @@ package com.sparta.spartagoods.controller;
 
 import com.sparta.spartagoods.dto.item.ItemRequestDto;
 import com.sparta.spartagoods.dto.item.ItemResponseDto;
-import com.sparta.spartagoods.security.UserDetailsImpl;
 import com.sparta.spartagoods.service.ItemService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @Slf4j
 @RestController
@@ -24,9 +20,9 @@ public class ItemController {
 
     private final ItemService itemService;
 
-    @PostMapping("/")
+    @PostMapping
     @Secured("ROLE_ADMIN")
-    public ResponseEntity<ItemResponseDto> createItem(@Valid @RequestBody ItemRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+    public ResponseEntity<ItemResponseDto> createItem(@Valid @RequestBody ItemRequestDto requestDto ) {
         return itemService.createItem(requestDto);
     }
 

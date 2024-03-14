@@ -31,7 +31,7 @@ public class ItemService {
         return ResponseEntity.ok(new ItemResponseDto(item));
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public ResponseEntity<ItemResponseDto> findItem(Long itemId) {
         Item item = itemRepository.findById(itemId).orElseThrow(() -> new IllegalArgumentException("해당 상품을 찾을 수 없습니다."));
         return ResponseEntity.ok(new ItemResponseDto(item));

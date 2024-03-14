@@ -57,7 +57,6 @@ public class CartService {
         TotalCartResponseDto cartResponseDto = new TotalCartResponseDto(cartResponseDtos, totalPrice);
         return new ResponseEntity<>(cartResponseDto, HttpStatus.OK);
 
-
     }
 
     @Transactional
