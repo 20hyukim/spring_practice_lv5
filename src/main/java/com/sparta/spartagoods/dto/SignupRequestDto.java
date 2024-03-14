@@ -29,6 +29,8 @@ public class SignupRequestDto {
     @Schema(description = "사용자 핸드폰 번호", nullable = false, example = "010-12-31")
     @NotBlank
     private String phoneNumber;
+
+    @Schema(description = "주소", nullable = false, example = "경기도 하남시 ...")
     @NotBlank
     private String address;
 
